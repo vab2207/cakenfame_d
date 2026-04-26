@@ -1,0 +1,627 @@
+/* ================= ROOT ================= */
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #ff4e8a, #7a5cff);
+  --text-primary: #ffffff;
+  --accent: #ff4e8a;
+
+  --radius-lg: 2rem;
+  --radius-md: 1rem;
+  --radius-sm: 0.6rem;
+
+  --max-width: 1180px;
+  --container-padding: clamp(1rem, 4vw, 2rem);
+
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.15);
+
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.22);
+  --shadow-strong: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* ================= RESET ================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #4c1d95 0%, #6b2d6f 25%, #0f766e 100%);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  word-break: break-word;
+}
+
+/* ================= GLOBAL LAYOUT ================= */
+
+.profile-page,
+.profile-layout,
+.profile-main,
+.profile-bottom {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  padding: 1rem var(--container-padding);
+
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  margin: 0;
+  font-size: clamp(1.45rem, 2vw, 1.95rem);
+  font-weight: 800;
+  color: #facc15;
+  letter-spacing: 0.3px;
+}
+
+.logo-accent {
+  color: #ffffff;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.navbar-search-wrapper {
+  display: flex;
+  gap: 0.55rem;
+  width: clamp(260px, 42vw, 430px);
+}
+
+.navbar-search {
+  width: 100%;
+  height: 2.7rem;
+  padding: 0 1rem;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.navbar-search::placeholder {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.navbar-search:focus {
+  outline: none;
+  border-color: #facc15;
+}
+
+.navbar-search-btn,
+.auth-login-btn,
+.auth-logout-btn {
+  height: 2.7rem;
+  padding: 0 1.15rem;
+
+  border: none;
+  border-radius: 999px;
+
+  background: var(--primary-gradient);
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.navbar-search-btn:hover,
+.auth-login-btn:hover,
+.auth-logout-btn:hover {
+  transform: translateY(-2px);
+}
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.auth-username {
+  font-weight: 600;
+  color: #facc15;
+  max-width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ================= PROFILE HEADER ================= */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  max-width: 920px;
+  margin: 2.2rem auto;
+  padding: 1.8rem;
+
+  border-radius: 1.4rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+
+  box-shadow: var(--shadow-strong);
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  margin-bottom: 0.45rem;
+  font-size: clamp(1.55rem, 2vw, 2.2rem);
+  font-weight: 800;
+}
+
+.profile-profession {
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.profile-meta p {
+  margin: 0 0 0.45rem;
+  line-height: 1.45;
+}
+
+.profile-meta a {
+  color: #facc15;
+  text-decoration: none;
+}
+
+.profile-meta a:hover {
+  text-decoration: underline;
+}
+
+/* ================= GRID ================= */
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1.4rem, 4vw, 2.4rem);
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+  margin-bottom: 1.35rem;
+  padding: 1.2rem;
+
+  border-radius: 1rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  margin-bottom: 0.8rem;
+}
+
+.section-text {
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+/* ================= CARD LISTS ================= */
+
+.collaboration-list,
+.fans-list,
+.other-stars-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+  gap: 14px;
+}
+
+.collaboration-card,
+.fan-card,
+.other-star-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+
+  padding: 0.8rem;
+  min-height: 165px;
+
+  text-align: center;
+  text-decoration: none;
+  color: white;
+
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  transition: 0.2s ease;
+}
+
+.collaboration-card:hover,
+.fan-card:hover,
+.other-star-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.collaboration-image,
+.fan-image,
+.other-star-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 0.9rem;
+}
+
+.collaboration-image {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.collaboration-name,
+.fan-name,
+.other-star-name {
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+/* ================= SIDEBAR ================= */
+
+.birthday-d,
+.birthday-board {
+  margin-bottom: 1rem;
+}
+
+.sidebar-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  padding: 0.55rem;
+  border-radius: 0.9rem;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-image {
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* ================= SEARCH ================= */
+
+.search-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem var(--container-padding);
+}
+
+.search-title {
+  margin-bottom: 1rem;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.search-card {
+  padding: 0.75rem;
+
+  border-radius: 1rem;
+  background: white;
+  color: black;
+  text-decoration: none;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+}
+
+.search-card:hover {
+  transform: translateY(-4px);
+}
+
+.search-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 0.85rem;
+}
+
+.search-info {
+  padding-top: 0.7rem;
+}
+
+.search-name {
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.search-profession {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ================= AUTH ================= */
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 410px;
+  padding: 2rem;
+
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-card h2 {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  background: transparent;
+  color: white;
+}
+
+.auth-card input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.auth-card input:focus {
+  outline: none;
+  border-color: #facc15;
+}
+
+.auth-btn,
+.auth-btn-outline {
+  width: 100%;
+  padding: 0.85rem;
+
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.auth-btn {
+  border: none;
+  background: var(--primary-gradient);
+  color: white;
+}
+
+.auth-btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: white;
+}
+
+.auth-link {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.auth-link a {
+  color: #facc15;
+  text-decoration: none;
+}
+
+/* ================= BIRTHDAY BOARD ================= */
+
+.birthday-board {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  padding: 1rem;
+  overflow: hidden;
+
+  border-radius: 1.2rem;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02)
+  );
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+
+  box-shadow: var(--shadow-strong);
+}
+
+.birthday-board input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.birthday-board button {
+  padding: 0.75rem 1rem;
+
+  border: none;
+  border-radius: 999px;
+
+  background: var(--primary-gradient);
+  color: white;
+  cursor: pointer;
+}
+
+.birthday-board > div:last-child {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.2rem;
+}
+
+.birthday-board > div:last-child > div {
+  margin-bottom: 0.65rem;
+  padding: 0.8rem;
+
+  border-radius: 0.9rem;
+  background: rgba(255,255,255,0.06);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar-right,
+  .navbar-search-wrapper {
+    width: 100%;
+  }
+
+  .navbar-search-wrapper {
+    flex-direction: column;
+  }
+
+  .navbar-search-btn,
+  .auth-login-btn,
+  .auth-logout-btn {
+    width: 100%;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .profile-image {
+    width: 115px;
+    height: 115px;
+  }
+
+  .collaboration-list,
+  .fans-list,
+  .other-stars-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .birthday-board {
+    height: auto;
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .collaboration-list,
+  .fans-list,
+  .other-stars-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
