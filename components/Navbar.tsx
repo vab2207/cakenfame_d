@@ -35,7 +35,9 @@ export default function Navbar() {
 
       {/* RIGHT SIDE */}
       <div className="navbar-right">
-
+        <Link href="/twinzy" className="auth-login-btn">
+          Twinzy
+        </Link>
         {/* SEARCH */}
         <div className="navbar-search-wrapper">
           <input
@@ -59,7 +61,7 @@ export default function Navbar() {
 
         {/* AUTH SECTION */}
         <div className="navbar-auth">
-            <br />
+          <br />
           {!user ? (
             <Link href="/login" className="auth-login-btn">
               Login

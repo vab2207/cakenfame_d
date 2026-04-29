@@ -21,15 +21,33 @@ export default function BirthdayBoard({ profile }: any) {
   }, [profile.slug]);
 
   const handlePost = async () => {
-    const user = typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("user") || "null")
-      : null;
+    const localUser =
+      typeof window !== "undefined"
+        ? JSON.parse(localStorage.getItem("user") || "null")
+        : null;
+
+    const user = session?.user || localUser;
+
     if (!user) {
       alert("Please login to post");
       return;
     }
 
     if (!message.trim()) return;
+
+    const rawName =
+      user.name ||
+      user.username ||
+      user.email?.split("@")[0] ||
+      "Anonymous";
+
+    const parts = rawName.trim().split(" ");
+
+    let displayName = parts[0];
+
+    if (parts.length > 1) {
+      displayName = `${parts[0]} ${parts[1].charAt(0)}.`;
+    }
 
     const res = await fetch("/api/wishes", {
       method: "POST",
@@ -39,7 +57,7 @@ export default function BirthdayBoard({ profile }: any) {
       body: JSON.stringify({
         slug: profile.slug,
         message,
-        username: user?.username || user?.name || "Anonymous"
+        username: displayName
       })
     });
 

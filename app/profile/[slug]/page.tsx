@@ -4,7 +4,6 @@ import { getAllProfiles } from "@/lib/getAllProfiles";
 
 import Navbar from "@/components/Navbar";
 import ProfileHeader from "@/components/ProfileHeader";
-import CareerSection from "@/components/CareerSection";
 import PersonalSection from "@/components/PersonalSection";
 import CollaborationSection from "@/components/CollaborationSection";
 import BirthdaySidebar from "@/components/BirthdaySidebar";
@@ -50,7 +49,6 @@ export default async function ProfilePage({
         <div className="profile-layout">
           <section className="profile-main">
             <BioSection profile={profile} />
-            <CareerSection profile={profile} />
             <PersonalSection profile={profile} />
             <CollaborationSection
               profile={profile}
